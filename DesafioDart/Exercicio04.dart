@@ -10,24 +10,20 @@ void main() {
     'João Rahman|55|Jornalista|RJ',
   ];
 
-    //Contador das profissoes 
-  Map<String, int> contProfissao = {
-    'Desenvolvedor': 0,
-    'Estudante': 0,
-    'Dentista': 0,
-    'Jornalista': 0,
-  };
+  // Mapa dinâmico para contar o número de pacientes por profissão
+  Map<String, int> contagemPorProfissao = {};
 
-    //Contando a quantidade de pacientes por profissao
-  for (String paciente in pacientes) {
-    List<String> info = paciente.split("|");
-    String profissao = info[2];
-    contProfissao[profissao]++;
+  // Loop sobre os pacientes para contar o número de pacientes por profissão
+  for (String pacienteInfo in pacientes) {
+    var paciente = pacienteInfo.split('|');
+    var profissao = paciente[2];
+    contagemPorProfissao[profissao] = (contagemPorProfissao[profissao] ?? 0) + 1;
   }
 
-    //Print da profissao e quantidade 
+  // Imprime a contagem de pacientes por profissão
   print("-- TOTAL DE PACIENTES POR PROFISSÃO --");
-  contProfissao.forEach((profissao, quantidade) {
+  contagemPorProfissao.forEach((profissao, quantidade) {
     print("$profissao: $quantidade");
   });
 }
+
